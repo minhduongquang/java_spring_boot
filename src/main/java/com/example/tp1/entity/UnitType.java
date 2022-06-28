@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "unit_type")
+@Table(name = "unit_types")
 @Getter
 @Setter
 @NoArgsConstructor

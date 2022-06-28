@@ -53,25 +53,27 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6">
+
+                <div class="col-md-3 col-sm-6" th:each="product : ${products}">
                     <div class="single-shop-product">
                         <div class="product-upper">
                             <img alt="" th:src="@{/user/img/product-1.jpg}">
                         </div>
-                        <h2 style="font-size: 14px"><a href="#">Ten sp</a></h2>
+                        <h2 style="font-size: 14px"><a href="#" th:text="${product.name}"></a></h2>
                         <div class="product-carousel-price">
-                            <ins>123</ins>
-                        </div>  
-                        
+                            <ins th:text="${#numbers.formatCurrency(product.price)}"></ins>
+                        </div>
+
                         <div class="product-option-shop">
-                            <button class="add_to_cart_button" 
-                            	data-quantity="1" data-product_sku="" 
+                            <button class="add_to_cart_button"
+                            	data-quantity="1" data-product_sku=""
                             	data-product_id="70" rel="nofollow">Add to cart</button>
-                        </div>                       
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-pagination text-center">
@@ -91,7 +93,7 @@
                               </a>
                             </li>
                           </ul>
-                        </nav>                        
+                        </nav>
                     </div>
                 </div>
             </div>
