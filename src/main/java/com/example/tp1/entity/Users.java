@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -40,6 +41,7 @@ public class Users implements Serializable{
     private String email;
 
     @Column(name = "createDate")
+    @CreationTimestamp
 //    private String createDate;
     private Timestamp createDate;
 

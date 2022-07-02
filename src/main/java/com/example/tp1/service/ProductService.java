@@ -12,4 +12,5 @@ public interface ProductService {
     List<Products> findAll();
     Optional<Products> findById(Long id);
     Products findBySlug(String slug);
+
 }

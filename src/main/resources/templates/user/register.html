@@ -38,15 +38,15 @@
 				<div class="fadeIn first" style="margin-top: 5px" >
 					<img th:src="@{/user/img/login_icon.png}" style="width: 20%; height: auto" id="icon" alt="User Icon" />
 				</div>
-				<form method="POST">
+				<form method="POST" th:action="@{/register}" th:object="${userRequest}">
 					<input type="text" id="username" class="fadeIn second" 
-						placeholder="Username"/>
+						placeholder="Username" th:field="*{username}"/>
 					<input type="password" id="hashPassword" class="fadeIn third" 
-						placeholder="Password"/>
+						placeholder="Password" th:field="*{hashPassword}"/>
 					<input type="text" id="fullname" class="fadeIn third" 
-						placeholder="Fullname"/>
+						placeholder="Fullname" th:field="*{fullname}"/>
 					<input type="text" id="email" class="fadeIn third" 
-						placeholder="Email"/>
+						placeholder="Email" th:field="*{email}"/>
 					<input type="submit" class="fadeIn fourth" value="Register" />
 				</form>
 				<h5 style="color: red; margin-top: -15px" th:text="${message}"></h5>
