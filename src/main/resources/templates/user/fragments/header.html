@@ -44,9 +44,10 @@
 	                </div> 
 	                <div class="navbar-collapse collapse">
 	                    <ul class="nav navbar-nav">
-	                    	<li>
-	                    		<a href="">Welcome, username</span></a>
+	                    	<li th:if = "${session.currentUser != null}">
+	                    		<a href="">Welcome, <span th:text = "${session.currentUser.username}" style="font-style: italic"></span></a>
 	                    	</li>
+
 	                        <li>
 	                        	<a th:href="@{/index}">Home</a>
 	                        </li>
@@ -56,13 +57,13 @@
 	                        <li>
 	                        	<a th:href="@{/type/laptop}">Laptop</a>
 	                        </li>
-	                        <li>
+	                        <li th:if = "${session.currentUser != null}">
 	                        	<a th:href="@{/login}">Login</a>
 	                        </li>
-	                        <li>
+	                        <li th:if = "${session.currentUser != null}">
 	                        	<a th:href="@{/register}">Register</a>
 	                        </li>
-	                        <li>
+	                        <li th:if = "${session.currentUser == null}">
 	                    		<a th:href="@{/logout}">Logout</a>
 	                    	</li>
 	                    </ul>
