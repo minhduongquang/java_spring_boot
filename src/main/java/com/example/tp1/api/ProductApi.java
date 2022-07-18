@@ -1,15 +1,13 @@
 package com.example.tp1.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.tp1.entity.Products;
 import com.example.tp1.service.ProductService;
@@ -37,5 +35,22 @@ public class ProductApi {
         }
         return ResponseEntity.ok(product);
     }
+    // localhost:8080/api/products/find?id={...}
+    @GetMapping("/find")
+    public ResponseEntity<?> doGetById(@RequestParam ("id") Long id){
+        Products product = productsService.findById(id);
+        if (ObjectUtils.isEmpty(product)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(product);
+    }
+//    @GetMapping("/find")
+//    public ResponseEntity<?> doGetById(@RequestParam ("id") Long id){
+//        Optional<Products> product = productsService.findById(id);
+//        if (ObjectUtils.isEmpty(product)){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return ResponseEntity.ok(product);
+//    }
 }
 

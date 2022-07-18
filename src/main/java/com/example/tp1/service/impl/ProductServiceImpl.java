@@ -22,12 +22,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<Products> findById(Long id){
+    public Products findById(Long id){
         Optional<Products> result =  repo.findById(id);
         //return result.isPresent() ? result.get() : null ;
-        return result.isPresent() ? Optional.of(result.get()) : null ;
+        return result.isPresent() ? result.get() : null ;
 
     }
+//    public Optional<Products> findById(Long id){
+//        Optional<Products> result =  repo.findById(id);
+//        //return result.isPresent() ? result.get() : null ;
+//        return result.isPresent() ? Optional.of(result.get()) : null ;
+//
+//    }
 
     @Override
     public Products findBySlug(String slug){
