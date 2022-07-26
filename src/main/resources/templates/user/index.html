@@ -67,7 +67,8 @@
                         <div class="product-option-shop">
                             <button class="add_to_cart_button"
                             	data-quantity="1" data-product_sku=""
-                            	data-product_id="70" rel="nofollow">Add to cart</button>
+                            	data-product_id="70" rel="nofollow"
+                                th:attr="onclick = 'addToCart(\''+${product.id}+'\')'">Add to cart</button>
                         </div>
                     </div>
                 </div>
@@ -121,6 +122,28 @@
     <!-- Slider -->
     <script type="text/javascript" th:src="@{/user/js/bxslider.min.js}"></script>
 	<script type="text/javascript" th:src="@{/user/js/script.slider.js}"></script>
+    <script>
+        function addToCart(productId) {
+            var endpoint = '/api/cart/update?productId=' + productId + '&quantity=1&isReplace=false';
+            $.ajax({
+                url: endpoint,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    alert('Product was added successfully');
+                    $('#headerTotalPrice').text(formatCurrency(data.totalPrice));
+                    $('#headerTotalQuantity').text(data.totalQuantity);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function formatCurrency(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' ₫';
+        }
+    </script>
 	
 	</body>
 </html>
