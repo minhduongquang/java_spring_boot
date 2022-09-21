@@ -3,6 +3,7 @@ package com.example.tp1.service.impl;
 import com.example.tp1.entity.Products;
 import com.example.tp1.repository.ProductRepo;
 import com.example.tp1.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Products findBySlug(String slug){
         return repo.findBySlug(slug);
+    }
+
+    @Override
+    public void updateQuantity(Integer newQuantity, Long id){
+        repo.updateQuantity(newQuantity, id);
     }
 
 }

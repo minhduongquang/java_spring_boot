@@ -14,5 +14,6 @@ public interface ProductService {
     //Use Optional
     //Optional<Products> findById(Long id);
     Products findBySlug(String slug);
+    void updateQuantity(Integer newQuantity, Long id);
 
 }

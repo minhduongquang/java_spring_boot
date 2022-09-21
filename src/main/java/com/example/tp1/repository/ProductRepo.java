@@ -18,4 +18,7 @@ public interface ProductRepo extends JpaRepository<Products, Long> {
     List<Products> findAllAvailable();
 
     List<Products> findByIsDeletedAndQuantityGreaterThan(Boolean isDeleted, Integer quantity);
+
+    @Query(value = "UPDATE products SET quantity = ?1 WHERE id = ?2", nativeQuery = true)
+    void updateQuantity(Integer newQuantity, Long id);
 }
